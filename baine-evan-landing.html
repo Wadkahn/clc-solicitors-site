@@ -141,12 +141,12 @@ button, input, select, textarea {
   align-items: center;
   gap: 2rem;
 }
-.nav__links a {
+.nav__links a:not(.nav__cta) {
   font-size: 0.85rem;
   color: var(--muted);
   transition: color 0.2s;
 }
-.nav__links a:hover { color: var(--fg); }
+.nav__links a:not(.nav__cta):hover { color: var(--fg); }
 .nav__cta {
   display: inline-flex;
   align-items: center;
@@ -201,7 +201,7 @@ button, input, select, textarea {
    HERO
    ======================================== */
 .hero {
-  padding-top: clamp(2rem, 5vw, 3.5rem);
+  padding-top: clamp(0.75rem, 2vw, 1.5rem);
   padding-bottom: clamp(3rem, 8vw, 6rem);
   border-bottom: 1px solid var(--border);
   display: grid;
@@ -679,23 +679,74 @@ button, input, select, textarea {
    ======================================== */
 .complaints-visible {
   border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.complaints-visible__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: var(--fg);
 }
 .complaints-visible__body {
-  max-width: 780px;
+  max-width: 840px;
 }
-.complaints-visible__body p {
-  font-size: 0.85rem;
+.complaints-visible__steps {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.complaints-visible__step {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.8rem;
+  align-items: start;
+}
+.complaints-visible__step-num {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  flex-shrink: 0;
+}
+.complaints-visible__step p {
+  font-size: 0.9rem;
   color: var(--muted);
   line-height: 1.7;
-  margin-bottom: 0.8rem;
 }
-.complaints-visible__body p:last-child { margin-bottom: 0; }
-.complaints-visible__body a {
+.complaints-visible__step strong { color: var(--fg); }
+.complaints-visible__contact {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 1.2rem 1.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.complaints-visible__contact a {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.complaints-visible__body strong { color: var(--fg); }
+.complaints-visible__note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+.complaints-visible__note a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 /* ========================================
    COMPLAINTS MODAL
@@ -919,7 +970,7 @@ button, input, select, textarea {
 <!-- ============ SERVICES ============ -->
 <section class="services section-pad" id="services">
   <div class="wrapper">
-    <p class="eyebrow">What We Do</p>
+    <h2 class="heading-lg" style="margin-bottom: 2.5rem;">What We Do</h2>
     <div class="services__grid">
       <div class="services__col">
         <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#cba557" stroke-width="1.2" style="margin-bottom:1rem" xmlns="http://www.w3.org/2000/svg">
@@ -967,7 +1018,7 @@ button, input, select, textarea {
 <section class="pricing section-pad" id="pricing">
   <div class="wrapper">
     <div class="pricing__header">
-      <p class="eyebrow">Transparent Fees</p>
+      <h2 class="heading-lg" style="margin-bottom: 2.5rem;">Transparent Fees</h2>
       <h2 class="heading-md">Clear pricing, no hidden&nbsp;costs</h2>
       <p class="text-body-sm">We believe in full transparency. All fees are quoted upfront so you know exactly where you stand before any work begins.</p>
     </div>
@@ -1024,7 +1075,7 @@ button, input, select, textarea {
 <section class="team section-pad" id="team">
   <div class="wrapper">
     <div class="team__header">
-      <p class="eyebrow">Our Team</p>
+      <h2 class="heading-lg" style="margin-bottom: 2.5rem;">Our Team</h2>
       <h2 class="heading-md">Experienced solicitors who know&nbsp;you&nbsp;by&nbsp;name</h2>
       <p class="text-body-sm">Every client works directly with a qualified solicitor — not a call centre. We keep caseloads small so you always get our full attention.</p>
     </div>
@@ -1151,7 +1202,7 @@ button, input, select, textarea {
 <section class="testimonials section-pad" id="testimonials">
   <div class="wrapper">
     <div class="testimonials__header">
-      <p class="eyebrow">What Our Clients Say</p>
+      <h2 class="heading-lg" style="margin-bottom: 2.5rem;">What Our Clients Say</h2>
       <h2 class="heading-md">Real experiences, honest words</h2>
     </div>
     <div class="testimonials__carousel">
@@ -1195,7 +1246,7 @@ button, input, select, textarea {
 <section class="booking section-pad" id="booking">
   <div class="wrapper booking__inner">
     <div class="booking__info">
-      <p class="eyebrow">Get in Touch</p>
+      <h2 class="heading-lg" style="margin-bottom: 2.5rem;">Get in Touch</h2>
       <h2 class="heading-md">Book a free initial&nbsp;consultation</h2>
       <p class="text-body-sm">Speak with a solicitor about your matter — no obligation, no jargon. We'll listen, explain your options, and give you a clear fee estimate before any work begins.</p>
       <div style="margin-top: 1.5rem;">
@@ -1329,11 +1380,38 @@ button, input, select, textarea {
 <!-- ============ COMPLAINTS PROCEDURE (visible) ============ -->
 <section class="complaints-visible section-pad" id="complaints">
   <div class="wrapper">
-    <p class="eyebrow">Complaints Procedure</p>
+    <h2 class="complaints-visible__heading">Complaints Procedure</h2>
     <div class="complaints-visible__body">
-      <p>Whilst we hope that you will be happy with the quality of service we provide, should you have any cause for complaint about any aspect of our service, or with your bill, then in the first instance please contact <strong>Ms Amrik Baines, Director</strong>, who will try to resolve the problem. We will acknowledge your complaint within <strong>14 days</strong> and provide a full response within <strong>21 days</strong>.</p>
-      <p>If Ms Baines is unable to resolve your complaint to your satisfaction, you may then ask the <strong>Legal Ombudsman</strong> at PO Box 6806, Wolverhampton WV1 9WJ (telephone <a href="tel:03005550333">0300 555 0333</a>, email <a href="mailto:enquiries@legalombudsman.org.uk">enquiries@legalombudsman.org.uk</a>) to consider the complaint. You must normally refer your complaint to the Legal Ombudsman within <strong>six months</strong> of receiving a final written response from us.</p>
-      <p>If you are concerned about the behaviour of this firm or believe we have breached SRA Principles, please contact the SRA at <a href="https://www.sra.org.uk/consumers/problems/report-solicitor" target="_blank" rel="noopener">www.sra.org.uk/consumers/problems/report-solicitor</a>.</p>
+      <div class="complaints-visible__steps">
+        <div class="complaints-visible__step">
+          <span class="complaints-visible__step-num">1</span>
+          <div>
+            <p>In the first instance, please contact <strong>Ms Amrik Baines, Director</strong>, who will try to resolve the problem. We will acknowledge your complaint within <strong>14 days</strong> and provide a full written response within <strong>21 days</strong>.</p>
+          </div>
+        </div>
+        <div class="complaints-visible__step">
+          <span class="complaints-visible__step-num">2</span>
+          <div>
+            <p>If we are unable to resolve your complaint to your satisfaction, you may refer it to the <strong>Legal Ombudsman</strong> within <strong>six months</strong> of receiving our final written response.</p>
+            <div class="complaints-visible__contact">
+              <strong>Legal Ombudsman</strong><br>
+              PO Box 6806, Wolverhampton WV1 9WJ<br>
+              Tel: <a href="tel:03005550333">0300 555 0333</a><br>
+              Email: <a href="mailto:enquiries@legalombudsman.org.uk">enquiries@legalombudsman.org.uk</a>
+            </div>
+          </div>
+        </div>
+        <div class="complaints-visible__step">
+          <span class="complaints-visible__step-num">3</span>
+          <div>
+            <p>If you are concerned about professional conduct or believe we have breached SRA Principles, you may report your concerns directly to the <strong>Solicitors Regulation Authority</strong>.</p>
+            <div class="complaints-visible__contact">
+              <a href="https://www.sra.org.uk/consumers/problems/report-solicitor" target="_blank" rel="noopener">www.sra.org.uk/consumers/problems/report-solicitor</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="complaints-visible__note">We are committed to providing a high-quality legal service. If at any point you are unhappy with the service you receive, please raise it with us so we can address it promptly.</p>
     </div>
   </div>
 </section>
