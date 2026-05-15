@@ -1,0 +1,1578 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLC Solicitors — Wills, Probate &amp; Property Solicitors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   TOKENS — Gold & Charcoal (CLC-inspired)
+   ======================================== */
+:root {
+  --bg:      #ffffff;
+  --surface: #f9f8f6;
+  --fg:      #323438;
+  --muted:   #6b6e75;
+  --border:  #eaeaea;
+  --accent:  #cba557;
+  --accent-hover: #b8943d;
+  --dark:    #323438;
+
+  --font-display: 'Amiri', Georgia, serif;
+  --font-body:    'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:    'Poppins', -apple-system, system-ui, sans-serif;
+
+  --max-w: 1240px;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --section-py: clamp(3rem, 8vw, 7rem);
+}
+
+/* ========================================
+   RESET
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1vw + 0.5rem, 1.1rem);
+  line-height: 1.65;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
+.wrapper {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+.section-pad { padding-top: var(--section-py); padding-bottom: var(--section-py); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.heading-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.heading-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--fg);
+}
+.heading-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--fg);
+}
+.text-muted { color: var(--muted); }
+.text-body-sm { font-size: 0.9rem; line-height: 1.6; }
+
+/* ========================================
+   NAV
+   ======================================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--fg);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1;
+}
+.nav__logo svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.nav__logo .logo-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.nav__logo .logo-clc { color: var(--accent); }
+.nav__logo .logo-sol { font-weight: 400; color: var(--muted); font-size: 1.1rem; letter-spacing: 0.05em; }
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.nav__links a:not(.nav__cta) {
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav__links a:not(.nav__cta):hover { color: var(--fg); }
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.nav__cta:hover { background: var(--accent-hover); }
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--fg);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  .nav__links { display: none; }
+  .nav__hamburger { display: flex; }
+  .nav__links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem var(--gutter);
+    gap: 1.2rem;
+  }
+  .nav__links.open .nav__cta { width: 100%; justify-content: center; }
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  padding-top: clamp(0.75rem, 2vw, 1.5rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.hero__content {
+  max-width: 720px;
+}
+.hero__image {
+  aspect-ratio: 4/5;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.hero__image svg { width: 100%; height: 100%; display: block; }
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero__image { max-height: 360px; aspect-ratio: 16/9; }
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.5rem;
+}
+.hero__sub {
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+}
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.hero__cta:hover { background: var(--accent-hover); }
+.hero__cta svg { width: 16px; height: 16px; }
+.hero__meta {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.hero__stat-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.hero__stat-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ========================================
+   SERVICES
+   ======================================== */
+.services { border-bottom: 1px solid var(--border); }
+.services__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.services__col {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+.services__col:first-child {
+  padding-right: clamp(1.5rem, 4vw, 3rem);
+  border-right: 1px solid var(--border);
+}
+.services__col:last-child {
+  padding-left: clamp(1.5rem, 4vw, 3rem);
+}
+.services__col h3 {
+  margin-bottom: 1.2rem;
+}
+.services__col p {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  max-width: 440px;
+}
+.services__list li {
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.92rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.services__list li::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.4em;
+}
+
+@media (max-width: 600px) {
+  .services__grid { grid-template-columns: 1fr; }
+  .services__col:first-child {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2.5rem;
+  }
+  .services__col:last-child {
+    padding-left: 0;
+    padding-top: 2.5rem;
+  }
+}
+
+/* ========================================
+   TEAM
+   ======================================== */
+.team { border-bottom: 1px solid var(--border); }
+.team__header {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  max-width: 500px;
+}
+.team__header p { color: var(--muted); margin-top: 1rem; }
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.team__card {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+.team__avatar {
+  width: 120px;
+  height: 150px;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+}
+.team__avatar svg { width: 100%; height: 100%; display: block; }
+.team__card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.team__role {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.team__bio {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 768px) {
+  .team__grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ========================================
+   TESTIMONIALS
+   ======================================== */
+.testimonials { border-bottom: 1px solid var(--border); }
+.testimonials__header { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.testimonials__carousel {
+  position: relative;
+  overflow: hidden;
+}
+.testimonials__track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.testimonials__slide {
+  min-width: 100%;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.testimonials__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 680px;
+}
+.testimonials__quote::before {
+  content: '\201C';
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.testimonials__author {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.testimonials__detail {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.testimonials__nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.testimonials__dot {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+}
+.testimonials__dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ========================================
+   BOOKING
+   ======================================== */
+.booking { border-bottom: 1px solid var(--border); }
+.booking__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+.booking__info h2 { margin-bottom: 1rem; }
+.booking__info p { color: var(--muted); margin-bottom: 2rem; max-width: 400px; }
+.booking__contact-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+.booking__contact-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  min-width: 60px;
+}
+.booking__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  padding-right: 2.5rem;
+}
+.booking__submit {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  width: 100%;
+}
+.booking__submit:hover { background: var(--accent-hover); }
+.booking__submit:disabled { opacity: 0.5; cursor: default; }
+.form-success {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  background: #f0f4e8;
+  color: #2d5016;
+  font-size: 0.9rem;
+  display: none;
+}
+.form-success.show { display: block; }
+
+@media (max-width: 768px) {
+  .booking__inner { grid-template-columns: 1fr; }
+  .booking__form { grid-template-columns: 1fr; }
+}
+
+/* ========================================
+   PRICING
+   ======================================== */
+.pricing { border-bottom: 1px solid var(--border); }
+.pricing__header { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 560px; }
+.pricing__header p { color: var(--muted); margin-top: 1rem; }
+.pricing__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+.pricing__card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+}
+.pricing__card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.pricing__card-price {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.pricing__card-vat {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+.pricing__card-list {
+  flex: 1;
+}
+.pricing__card-list li {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.pricing__card-list li::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.4em;
+}
+.pricing__note {
+  margin-top: 2rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+  max-width: 680px;
+}
+@media (max-width: 768px) {
+  .pricing__grid { grid-template-columns: 1fr; }
+}
+
+/* ========================================
+   LOCATION IMAGE
+   ======================================== */
+.location-image {
+  width: 100%;
+  height: clamp(200px, 25vw, 360px);
+  background: var(--border);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.location-image svg { width: 100%; height: 100%; display: block; }
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  padding-top: clamp(2rem, 4vw, 3rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  background: var(--dark);
+  color: #b0b3b8;
+}
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer__brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+.footer__brand .logo-clc { color: var(--accent); }
+.footer__regulatory {
+  font-size: 0.75rem;
+  color: #8a8d93;
+  max-width: 480px;
+  line-height: 1.5;
+}
+.footer__links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer__links a {
+  font-size: 0.8rem;
+  color: #8a8d93;
+  transition: color 0.2s;
+}
+.footer__links a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .footer__inner { flex-direction: column; }
+}
+
+/* ========================================
+   COMPLAINTS VISIBLE
+   ======================================== */
+.complaints-visible {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.complaints-visible__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: var(--fg);
+}
+.complaints-visible__body {
+  max-width: 840px;
+}
+.complaints-visible__steps {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.complaints-visible__step {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.8rem;
+  align-items: start;
+}
+.complaints-visible__step-num {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  flex-shrink: 0;
+}
+.complaints-visible__step p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.complaints-visible__step strong { color: var(--fg); }
+.complaints-visible__contact {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 1.2rem 1.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.complaints-visible__contact a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.complaints-visible__note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+.complaints-visible__note a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ========================================
+   COMPLAINTS MODAL
+   ======================================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(50,52,56,0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--bg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: clamp(2rem, 4vw, 3rem);
+  position: relative;
+}
+.modal__close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  transition: color 0.2s, border-color 0.2s;
+}
+.modal__close:hover { color: var(--fg); border-color: var(--fg); }
+.modal h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-right: 2.5rem;
+}
+.modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1.8rem;
+  margin-bottom: 0.6rem;
+  color: var(--fg);
+}
+.modal p, .modal li {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+.modal ul {
+  list-style: disc;
+  padding-left: 1.3rem;
+  margin-bottom: 1rem;
+}
+.modal ul li { margin-bottom: 0.4rem; }
+.modal a { color: var(--accent); text-decoration: underline; }
+.modal a:hover { color: var(--accent-hover); }
+.modal__divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrapper nav__inner">
+    <a href="#" class="nav__logo">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Scales of justice icon -->
+        <circle cx="14" cy="4.5" r="2.5" fill="#cba557"/>
+        <rect x="13.25" y="7" width="1.5" height="16" fill="#cba557"/>
+        <rect x="6" y="24" width="16" height="1.5" rx="0.75" fill="#cba557"/>
+        <rect x="4" y="10" width="20" height="1.2" rx="0.6" fill="#cba557"/>
+        <!-- Left pan -->
+        <path d="M4 11.2 L1.5 19 Q1.5 21 4 21 L10 21 Q12.5 21 12.5 19 L10 11.2" fill="none" stroke="#cba557" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- Right pan -->
+        <path d="M18 11.2 L15.5 19 Q15.5 21 18 21 L24 21 Q26.5 21 26.5 19 L24 11.2" fill="none" stroke="#cba557" stroke-width="1.2" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-text"><span class="logo-clc">CLC</span> <span class="logo-sol">Solicitors</span></span>
+    </a>
+    <div class="nav__links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#team">Our Team</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#booking" class="nav__cta">Book a Consultation</a>
+    </div>
+    <button class="nav__hamburger" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero wrapper">
+  <div class="hero__content">
+    <p class="eyebrow" style="font-size:1rem; letter-spacing:0.18em; font-weight:500;">Wills, Probate &amp; Property</p>
+    <h1 style="text-wrap:balance">Trusted legal counsel for&nbsp;life's most important&nbsp;decisions</h1>
+    <p class="hero__sub">CLC Solicitors is a boutique practice in the heart of London, dedicated to wills, estate planning, probate administration, and residential property conveyancing. Clear advice, fair fees, and a personal service from start&nbsp;to&nbsp;finish.</p>
+    <a href="#booking" class="hero__cta">
+      Book a Free Consultation
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+  <!-- Hero image: law library / office interior -->
+  <div class="hero__image">
+    <svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="oklch(92% 0.01 80)"/><stop offset="1" stop-color="oklch(85% 0.015 75)"/></linearGradient>
+        <linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="oklch(38% 0.02 60)"/><stop offset="1" stop-color="oklch(30% 0.025 55)"/></linearGradient>
+      </defs>
+      <!-- Wall -->
+      <rect width="480" height="600" fill="url(#hg1)"/>
+      <!-- Wainscoting -->
+      <rect y="380" width="480" height="220" fill="oklch(35% 0.03 60)"/>
+      <rect y="375" width="480" height="8" fill="oklch(42% 0.02 65)"/>
+      <!-- Bookshelf left -->
+      <rect x="20" y="60" width="200" height="310" fill="url(#hg2)" rx="2"/>
+      <!-- Shelves -->
+      <rect x="24" y="60" width="192" height="4" fill="oklch(45% 0.02 60)"/>
+      <rect x="24" y="135" width="192" height="4" fill="oklch(45% 0.02 60)"/>
+      <rect x="24" y="210" width="192" height="4" fill="oklch(45% 0.02 60)"/>
+      <rect x="24" y="285" width="192" height="4" fill="oklch(45% 0.02 60)"/>
+      <!-- Books row 1 -->
+      <rect x="30" y="66" width="14" height="65" fill="#cba557" rx="1"/>
+      <rect x="47" y="70" width="12" height="61" fill="oklch(45% 0.06 240)" rx="1"/>
+      <rect x="62" y="68" width="16" height="63" fill="oklch(60% 0.04 80)" rx="1"/>
+      <rect x="81" y="72" width="10" height="59" fill="oklch(38% 0.08 15)" rx="1"/>
+      <rect x="94" y="66" width="18" height="65" fill="oklch(50% 0.05 200)" rx="1"/>
+      <rect x="115" y="69" width="13" height="62" fill="oklch(55% 0.03 90)" rx="1"/>
+      <rect x="131" y="67" width="15" height="64" fill="oklch(40% 0.07 30)" rx="1"/>
+      <rect x="149" y="71" width="11" height="60" fill="oklch(48% 0.06 160)" rx="1"/>
+      <rect x="163" y="66" width="17" height="65" fill="oklch(35% 0.04 70)" rx="1"/>
+      <rect x="183" y="69" width="14" height="62" fill="#cba557" rx="1"/>
+      <rect x="200" y="72" width="12" height="59" fill="oklch(58% 0.05 120)" rx="1"/>
+      <!-- Books row 2 -->
+      <rect x="30" y="141" width="16" height="65" fill="oklch(42% 0.06 200)" rx="1"/>
+      <rect x="49" y="144" width="14" height="62" fill="oklch(55% 0.08 40)" rx="1"/>
+      <rect x="66" y="140" width="12" height="66" fill="oklch(38% 0.04 100)" rx="1"/>
+      <rect x="81" y="143" width="18" height="63" fill="oklch(60% 0.03 70)" rx="1"/>
+      <rect x="102" y="141" width="11" height="65" fill="oklch(45% 0.07 280)" rx="1"/>
+      <rect x="116" y="145" width="15" height="61" fill="oklch(50% 0.10 28)" rx="1"/>
+      <rect x="134" y="142" width="13" height="64" fill="oklch(40% 0.05 150)" rx="1"/>
+      <rect x="150" y="140" width="17" height="66" fill="oklch(48% 0.04 85)" rx="1"/>
+      <rect x="170" y="144" width="12" height="62" fill="oklch(55% 0.06 20)" rx="1"/>
+      <rect x="185" y="141" width="16" height="65" fill="oklch(35% 0.03 240)" rx="1"/>
+      <!-- Books row 3 -->
+      <rect x="30" y="216" width="18" height="65" fill="oklch(50% 0.05 50)" rx="1"/>
+      <rect x="51" y="219" width="12" height="62" fill="oklch(42% 0.08 340)" rx="1"/>
+      <rect x="66" y="217" width="15" height="64" fill="oklch(58% 0.04 110)" rx="1"/>
+      <rect x="84" y="220" width="14" height="61" fill="oklch(36% 0.06 20)" rx="1"/>
+      <rect x="101" y="216" width="16" height="65" fill="#cba557" rx="1"/>
+      <rect x="120" y="218" width="11" height="63" fill="oklch(46% 0.05 170)" rx="1"/>
+      <rect x="134" y="220" width="14" height="61" fill="oklch(55% 0.03 60)" rx="1"/>
+      <rect x="151" y="216" width="18" height="65" fill="oklch(40% 0.07 250)" rx="1"/>
+      <rect x="172" y="219" width="13" height="62" fill="oklch(48% 0.06 95)" rx="1"/>
+      <rect x="188" y="217" width="15" height="64" fill="oklch(44% 0.04 10)" rx="1"/>
+      <!-- Window right -->
+      <rect x="260" y="60" width="180" height="250" fill="oklch(88% 0.008 220)" stroke="oklch(75% 0.01 80)" stroke-width="8" rx="2"/>
+      <line x1="350" y1="60" x2="350" y2="310" stroke="oklch(75% 0.01 80)" stroke-width="4"/>
+      <line x1="260" y1="185" x2="440" y2="185" stroke="oklch(75% 0.01 80)" stroke-width="4"/>
+      <!-- Light through window -->
+      <rect x="268" y="68" width="74" height="109" fill="oklch(95% 0.006 90)" opacity="0.5"/>
+      <rect x="358" y="68" width="74" height="109" fill="oklch(93% 0.008 95)" opacity="0.4"/>
+      <!-- Desk -->
+      <rect x="240" y="400" width="230" height="12" fill="oklch(40% 0.04 55)" rx="1"/>
+      <rect x="250" y="412" width="8" height="80" fill="oklch(38% 0.03 55)"/>
+      <rect x="452" y="412" width="8" height="80" fill="oklch(38% 0.03 55)"/>
+      <!-- Items on desk -->
+      <rect x="260" y="372" width="50" height="28" fill="oklch(92% 0.005 95)" stroke="oklch(80% 0.01 90)" stroke-width="1" rx="1"/>
+      <rect x="265" y="376" width="40" height="3" fill="oklch(65% 0.01 80)"/>
+      <rect x="265" y="382" width="35" height="3" fill="oklch(70% 0.01 80)"/>
+      <rect x="265" y="388" width="28" height="3" fill="oklch(75% 0.01 80)"/>
+      <!-- Pen -->
+      <rect x="330" y="386" width="60" height="3" fill="oklch(25% 0.02 60)" rx="1" transform="rotate(-8 360 387)"/>
+      <!-- Lamp -->
+      <ellipse cx="420" cy="398" rx="25" ry="8" fill="oklch(48% 0.06 140)"/>
+      <rect x="417" y="350" width="6" height="48" fill="oklch(50% 0.02 80)"/>
+      <path d="M400 350 L440 350 L430 335 L410 335 Z" fill="oklch(48% 0.06 140)"/>
+      <!-- Floor -->
+      <rect y="492" width="480" height="108" fill="oklch(42% 0.03 55)"/>
+      <!-- Rug -->
+      <rect x="60" y="500" width="360" height="90" fill="#cba557" opacity="0.25" rx="2"/>
+      <rect x="70" y="510" width="340" height="70" fill="none" stroke="#cba557" stroke-width="1" opacity="0.3" rx="1"/>
+    </svg>
+  </div>
+
+  <div class="hero__meta" style="grid-column: 1 / -1;">
+    <div>
+      <div class="hero__stat-value">30+</div>
+      <div class="hero__stat-label">Years combined experience</div>
+    </div>
+    <div>
+      <div class="hero__stat-value">2,400</div>
+      <div class="hero__stat-label">Estates &amp; transactions completed</div>
+    </div>
+    <div>
+      <div class="hero__stat-value">4.9</div>
+      <div class="hero__stat-label">Google rating (180 reviews)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services section-pad" id="services">
+  <div class="wrapper">
+    <h2 class="heading-lg" style="margin-bottom: 2.5rem;">What We Do</h2>
+    <div class="services__grid">
+      <div class="services__col">
+        <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#cba557" stroke-width="1.2" style="margin-bottom:1rem" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="6" width="28" height="36" rx="2" stroke-width="1.3"/>
+          <line x1="16" y1="14" x2="32" y2="14"/>
+          <line x1="16" y1="20" x2="32" y2="20"/>
+          <line x1="16" y1="26" x2="28" y2="26"/>
+          <path d="M20 32 L24 36 L32 28" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="heading-md">Wills &amp; Probate</h3>
+        <p class="text-body-sm">We guide individuals and families through estate planning and administration with care and precision — protecting what matters most.</p>
+        <ul class="services__list">
+          <li>Drafting and updating wills</li>
+          <li>Lasting Powers of Attorney (LPA)</li>
+          <li>Probate applications and estate administration</li>
+          <li>Inheritance tax planning</li>
+          <li>Trust creation and management</li>
+          <li>Contested wills and estate disputes</li>
+        </ul>
+      </div>
+      <div class="services__col">
+        <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#cba557" stroke-width="1.2" style="margin-bottom:1rem" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 24 L24 8 L42 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="12" y="24" width="24" height="18" rx="1"/>
+          <rect x="20" y="30" width="8" height="12"/>
+          <rect x="15" y="28" width="5" height="5" rx="0.5"/>
+          <rect x="28" y="28" width="5" height="5" rx="0.5"/>
+        </svg>
+        <h3 class="heading-md">Property</h3>
+        <p class="text-body-sm">Whether buying your first home or remortgaging an investment property, we handle every step of the conveyancing process.</p>
+        <ul class="services__list">
+          <li>Residential purchases and sales</li>
+          <li>Remortgage and transfer of equity</li>
+          <li>Leasehold and freehold matters</li>
+          <li>New-build purchases</li>
+          <li>Shared ownership and Help to Buy</li>
+          <li>Boundary and property disputes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing section-pad" id="pricing">
+  <div class="wrapper">
+    <div class="pricing__header">
+      <h2 class="heading-lg" style="margin-bottom: 2.5rem;">Transparent Fees</h2>
+      <h2 class="heading-md">Clear pricing, no hidden&nbsp;costs</h2>
+      <p class="text-body-sm">We believe in full transparency. All fees are quoted upfront so you know exactly where you stand before any work begins.</p>
+    </div>
+    <div class="pricing__grid">
+
+      <!-- Conveyancing — Sale -->
+      <div class="pricing__card">
+        <h3 class="pricing__card-title">Property Sale</h3>
+        <p class="pricing__card-price">From &pound;2,000</p>
+        <p class="pricing__card-vat">+ VAT &amp; disbursements</p>
+        <ul class="pricing__card-list">
+          <li>Freehold residential sale</li>
+          <li>Additional &pound;200 + VAT for leasehold</li>
+          <li>Land Registry fees (&pound;7–&pound;14)</li>
+          <li>CHAPS bank transfer &pound;35 + VAT</li>
+          <li>AML identity check &pound;20 + VAT</li>
+        </ul>
+      </div>
+
+      <!-- Conveyancing — Purchase -->
+      <div class="pricing__card">
+        <h3 class="pricing__card-title">Property Purchase</h3>
+        <p class="pricing__card-price">From &pound;2,000</p>
+        <p class="pricing__card-vat">+ VAT &amp; disbursements</p>
+        <ul class="pricing__card-list">
+          <li>Freehold residential purchase</li>
+          <li>Additional &pound;200 + VAT for leasehold</li>
+          <li>Supplement for new-build properties</li>
+          <li>Search fees &amp; Land Registry included in quote</li>
+          <li>CHAPS bank transfer &pound;35 + VAT</li>
+        </ul>
+      </div>
+
+      <!-- Probate -->
+      <div class="pricing__card">
+        <h3 class="pricing__card-title">Probate &amp; Estate Administration</h3>
+        <p class="pricing__card-price">1.5–5% of estate value</p>
+        <p class="pricing__card-vat">+ VAT | or hourly rate for estates over &pound;675,000</p>
+        <ul class="pricing__card-list">
+          <li>Extraction of Grant of Probate</li>
+          <li>Full estate administration available</li>
+          <li>Probate application fee &pound;273</li>
+          <li>International transfer admin &pound;75 + VAT each</li>
+          <li>Complexity-based pricing — quoted after initial meeting</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="pricing__note">Re-mortgage or new mortgage instructions from &pound;950 + VAT. All quotes are provided after an initial consultation. Disbursements (third-party costs such as searches, Land Registry fees, and Stamp Duty) are payable in addition to our legal fees.</p>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="team section-pad" id="team">
+  <div class="wrapper">
+    <div class="team__header">
+      <h2 class="heading-lg" style="margin-bottom: 2.5rem;">Our Team</h2>
+      <h2 class="heading-md">Experienced solicitors who know&nbsp;you&nbsp;by&nbsp;name</h2>
+      <p class="text-body-sm">Every client works directly with a qualified solicitor — not a call centre. We keep caseloads small so you always get our full attention.</p>
+    </div>
+    <div class="team__grid">
+      <div class="team__card">
+        <div class="team__avatar">
+          <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="150" fill="oklch(92% 0.006 90)"/>
+            <!-- Shoulders/blazer -->
+            <ellipse cx="60" cy="165" rx="55" ry="45" fill="oklch(22% 0.015 250)"/>
+            <!-- Blouse -->
+            <path d="M45 120 Q52 115 60 118 Q68 115 75 120 L72 150 H48 Z" fill="oklch(96% 0.003 90)"/>
+            <!-- Gold necklace -->
+            <path d="M47 120 Q60 130 73 120" fill="none" stroke="#cba557" stroke-width="1.2"/>
+            <circle cx="60" cy="127" r="2.5" fill="#cba557"/>
+            <!-- Neck -->
+            <rect x="49" y="100" width="22" height="20" fill="oklch(62% 0.06 55)" rx="4"/>
+            <!-- Head -->
+            <ellipse cx="60" cy="72" rx="29" ry="35" fill="oklch(64% 0.06 55)"/>
+            <!-- Hair — long, dark, flowing -->
+            <ellipse cx="60" cy="50" rx="32" ry="22" fill="oklch(16% 0.02 40)"/>
+            <!-- Hair sides — long flowing past shoulders -->
+            <path d="M28 55 Q24 80 26 115 Q28 125 34 120 Q30 90 32 65 Z" fill="oklch(16% 0.02 40)"/>
+            <path d="M92 55 Q96 80 94 115 Q92 125 86 120 Q90 90 88 65 Z" fill="oklch(16% 0.02 40)"/>
+            <!-- Parting -->
+            <path d="M55 30 Q58 45 56 55" fill="none" stroke="oklch(12% 0.02 40)" stroke-width="0.8" opacity="0.4"/>
+            <!-- Eyes — slightly larger, feminine -->
+            <ellipse cx="48" cy="75" rx="3.8" ry="2.8" fill="oklch(22% 0.03 40)"/>
+            <ellipse cx="72" cy="75" rx="3.8" ry="2.8" fill="oklch(22% 0.03 40)"/>
+            <!-- Eyelashes -->
+            <path d="M43 73 L41 71" stroke="oklch(20% 0.02 40)" stroke-width="1" stroke-linecap="round"/>
+            <path d="M77 73 L79 71" stroke="oklch(20% 0.02 40)" stroke-width="1" stroke-linecap="round"/>
+            <!-- Eyebrows — arched -->
+            <path d="M42 68 Q48 63 54 67" fill="none" stroke="oklch(20% 0.02 40)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M66 67 Q72 63 78 68" fill="none" stroke="oklch(20% 0.02 40)" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Warm smile -->
+            <path d="M50 88 Q60 95 70 88" fill="none" stroke="oklch(50% 0.04 50)" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Subtle lips -->
+            <ellipse cx="60" cy="88" rx="8" ry="2.5" fill="oklch(58% 0.08 20)" opacity="0.35"/>
+          </svg>
+        </div>
+        <h3>Amrik Baines</h3>
+        <p class="team__role">Senior Partner — Wills &amp; Probate</p>
+        <p class="team__bio">Qualified in 1996, Amrik has administered over 1,400 estates and specialises in complex inheritance tax planning, cross-border probate, and contested wills. She leads the firm's private client practice.</p>
+      </div>
+      <div class="team__card">
+        <div class="team__avatar">
+          <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="150" fill="oklch(92% 0.006 90)"/>
+            <!-- Shoulders/blazer -->
+            <ellipse cx="60" cy="165" rx="55" ry="45" fill="oklch(30% 0.03 240)"/>
+            <!-- Blouse -->
+            <rect x="44" y="118" width="32" height="28" fill="oklch(96% 0.003 90)" rx="2"/>
+            <!-- Necklace -->
+            <path d="M46 122 Q60 132 74 122" fill="none" stroke="#cba557" stroke-width="1.2"/>
+            <circle cx="60" cy="131" r="2.5" fill="#cba557"/>
+            <!-- Neck -->
+            <rect x="48" y="100" width="24" height="20" fill="oklch(72% 0.04 55)" rx="4"/>
+            <!-- Head -->
+            <ellipse cx="60" cy="70" rx="27" ry="34" fill="oklch(74% 0.04 55)"/>
+            <!-- Hair — medium brown, shoulder-length bob -->
+            <ellipse cx="60" cy="50" rx="31" ry="22" fill="oklch(38% 0.04 50)"/>
+            <ellipse cx="34" cy="65" rx="10" ry="24" fill="oklch(38% 0.04 50)"/>
+            <ellipse cx="86" cy="65" rx="10" ry="24" fill="oklch(38% 0.04 50)"/>
+            <rect x="26" y="65" width="13" height="40" fill="oklch(38% 0.04 50)" rx="6"/>
+            <rect x="81" y="65" width="13" height="40" fill="oklch(38% 0.04 50)" rx="6"/>
+            <!-- Eyes -->
+            <ellipse cx="48" cy="73" rx="3.5" ry="2.5" fill="oklch(32% 0.04 180)"/>
+            <ellipse cx="72" cy="73" rx="3.5" ry="2.5" fill="oklch(32% 0.04 180)"/>
+            <!-- Eyelashes -->
+            <path d="M44 71 L42 69" stroke="oklch(25% 0.02 50)" stroke-width="0.8" stroke-linecap="round"/>
+            <path d="M76 71 L78 69" stroke="oklch(25% 0.02 50)" stroke-width="0.8" stroke-linecap="round"/>
+            <!-- Brows — soft arch -->
+            <path d="M43 67 Q48 63 53 66" fill="none" stroke="oklch(35% 0.03 50)" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M67 66 Q72 63 77 67" fill="none" stroke="oklch(35% 0.03 50)" stroke-width="1.3" stroke-linecap="round"/>
+            <!-- Smile -->
+            <path d="M50 87 Q60 93 70 87" fill="none" stroke="oklch(52% 0.04 50)" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Subtle lips -->
+            <ellipse cx="60" cy="87" rx="7" ry="2.2" fill="oklch(56% 0.07 18)" opacity="0.3"/>
+          </svg>
+        </div>
+        <h3>Tina Sheridan</h3>
+        <p class="team__role">Partner — Property</p>
+        <p class="team__bio">A property specialist since 2003, Tina handles residential conveyancing from first-time purchases to large portfolio transactions across North West London. She is known for her calm, thorough approach.</p>
+      </div>
+      <div class="team__card">
+        <div class="team__avatar">
+          <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="150" fill="oklch(92% 0.006 90)"/>
+            <!-- Shoulders/blazer -->
+            <ellipse cx="60" cy="165" rx="55" ry="45" fill="oklch(40% 0.04 240)"/>
+            <!-- Shirt -->
+            <rect x="46" y="118" width="28" height="25" fill="oklch(96% 0.003 90)" rx="2"/>
+            <!-- Neck -->
+            <rect x="48" y="100" width="24" height="20" fill="oklch(76% 0.04 60)" rx="4"/>
+            <!-- Head -->
+            <ellipse cx="60" cy="70" rx="27" ry="34" fill="oklch(78% 0.04 60)"/>
+            <!-- Hair - longer, dark -->
+            <ellipse cx="60" cy="50" rx="31" ry="24" fill="oklch(20% 0.02 40)"/>
+            <ellipse cx="34" cy="68" rx="9" ry="28" fill="oklch(20% 0.02 40)"/>
+            <ellipse cx="86" cy="68" rx="9" ry="28" fill="oklch(20% 0.02 40)"/>
+            <!-- Hair falling past shoulders -->
+            <rect x="26" y="68" width="12" height="50" fill="oklch(20% 0.02 40)" rx="5"/>
+            <rect x="82" y="68" width="12" height="50" fill="oklch(20% 0.02 40)" rx="5"/>
+            <!-- Eyes -->
+            <ellipse cx="48" cy="73" rx="3" ry="2.5" fill="oklch(25% 0.03 40)"/>
+            <ellipse cx="72" cy="73" rx="3" ry="2.5" fill="oklch(25% 0.03 40)"/>
+            <!-- Subtle brows -->
+            <path d="M43 66 Q48 64 53 66" fill="none" stroke="oklch(25% 0.02 40)" stroke-width="1.3"/>
+            <path d="M67 66 Q72 64 77 66" fill="none" stroke="oklch(25% 0.02 40)" stroke-width="1.3"/>
+            <!-- Warm smile -->
+            <path d="M49 86 Q60 94 71 86" fill="none" stroke="oklch(55% 0.04 50)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Sophie Ng</h3>
+        <p class="team__role">Associate Solicitor</p>
+        <p class="team__bio">Sophie joined CLC Solicitors in 2019 and works across both practice areas, with particular expertise in lasting powers of attorney and leasehold conveyancing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials section-pad" id="testimonials">
+  <div class="wrapper">
+    <div class="testimonials__header">
+      <h2 class="heading-lg" style="margin-bottom: 2.5rem;">What Our Clients Say</h2>
+      <h2 class="heading-md">Real experiences, honest words</h2>
+    </div>
+    <div class="testimonials__carousel">
+      <div class="testimonials__track" id="testimonialTrack">
+
+        <div class="testimonials__slide">
+          <blockquote class="testimonials__quote">
+            Amrik made the entire probate process straightforward during what was an incredibly difficult time for our family. She explained every step clearly and handled the estate with genuine care.
+          </blockquote>
+          <p class="testimonials__author">Margaret Holloway</p>
+          <p class="testimonials__detail">Probate administration — 2024</p>
+        </div>
+
+        <div class="testimonials__slide">
+          <blockquote class="testimonials__quote">
+            Tina managed our house sale and purchase of a flat simultaneously. Both completed on time despite a chain of five. Her communication was excellent — we always knew exactly where things stood.
+          </blockquote>
+          <p class="testimonials__author">James &amp; Priya Connolly</p>
+          <p class="testimonials__detail">Residential conveyancing — 2025</p>
+        </div>
+
+        <div class="testimonials__slide">
+          <blockquote class="testimonials__quote">
+            I came to CLC Solicitors to update my will and set up LPAs. Sophie took the time to understand our family situation and drafted everything in plain English. Highly recommended for anyone putting their affairs in order.
+          </blockquote>
+          <p class="testimonials__author">David Ashworth</p>
+          <p class="testimonials__detail">Will drafting &amp; LPA — 2025</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="testimonials__nav" id="testimonialNav">
+      <button class="testimonials__dot active" data-index="0" aria-label="Testimonial 1"></button>
+      <button class="testimonials__dot" data-index="1" aria-label="Testimonial 2"></button>
+      <button class="testimonials__dot" data-index="2" aria-label="Testimonial 3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="booking section-pad" id="booking">
+  <div class="wrapper booking__inner">
+    <div class="booking__info">
+      <h2 class="heading-lg" style="margin-bottom: 2.5rem;">Get in Touch</h2>
+      <h2 class="heading-md">Book a free initial&nbsp;consultation</h2>
+      <p class="text-body-sm">Speak with a solicitor about your matter — no obligation, no jargon. We'll listen, explain your options, and give you a clear fee estimate before any work begins.</p>
+      <div style="margin-top: 1.5rem;">
+        <div class="booking__contact-item">
+          <span class="booking__contact-label">Tel</span>
+          <span>020 7624 6433</span>
+        </div>
+        <div class="booking__contact-item">
+          <span class="booking__contact-label">Email</span>
+          <span>law@clcsolicitors.co.uk</span>
+        </div>
+        <div class="booking__contact-item">
+          <span class="booking__contact-label">Office</span>
+          <span>21 Lonsdale Road, Queens Park, London NW6 6RA</span>
+        </div>
+        <div class="booking__contact-item">
+          <span class="booking__contact-label">Hours</span>
+          <span>Mon–Fri, 9:00–17:30</span>
+        </div>
+      </div>
+    </div>
+    <form class="booking__form" id="bookingForm" novalidate>
+      <div class="form-group">
+        <label for="fname">Full name</label>
+        <input type="text" id="fname" name="fname" required placeholder="e.g. Sarah Mitchell">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" required placeholder="sarah@example.com">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" placeholder="07700 900 000">
+      </div>
+      <div class="form-group">
+        <label for="service">Service area</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Select a service…</option>
+          <option>Drafting or updating a will</option>
+          <option>Lasting Power of Attorney</option>
+          <option>Probate &amp; estate administration</option>
+          <option>Inheritance tax planning</option>
+          <option>Buying a property</option>
+          <option>Selling a property</option>
+          <option>Remortgage or transfer of equity</option>
+          <option>Other — I'll explain below</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Preferred date</label>
+        <input type="date" id="date" name="date">
+      </div>
+      <div class="form-group full">
+        <label for="message">Tell us briefly about your matter</label>
+        <textarea id="message" name="message" rows="4" placeholder="A few lines about your situation and what you'd like help with…"></textarea>
+      </div>
+      <div class="form-success" id="formSuccess">
+        Thank you — we've received your enquiry. A member of our team will be in touch within one working day.
+      </div>
+      <button type="submit" class="booking__submit" id="submitBtn">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ LOCATION IMAGE ============ -->
+<div class="location-image">
+  <svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="oklch(88% 0.02 230)"/><stop offset="1" stop-color="oklch(92% 0.01 210)"/></linearGradient>
+    </defs>
+    <!-- Sky -->
+    <rect width="1200" height="360" fill="url(#sky)"/>
+    <!-- Distant buildings -->
+    <rect x="0" y="120" width="120" height="240" fill="oklch(82% 0.01 75)"/>
+    <rect x="130" y="100" width="90" height="260" fill="oklch(80% 0.015 70)"/>
+    <rect x="230" y="140" width="110" height="220" fill="oklch(84% 0.01 80)"/>
+    <!-- Church spire -->
+    <rect x="370" y="80" width="50" height="280" fill="oklch(72% 0.02 65)"/>
+    <polygon points="370,80 395,20 420,80" fill="oklch(68% 0.02 65)"/>
+    <!-- Mid buildings -->
+    <rect x="440" y="130" width="140" height="230" fill="oklch(78% 0.015 72)"/>
+    <rect x="450" y="140" width="25" height="35" fill="oklch(85% 0.01 210)" rx="1"/>
+    <rect x="485" y="140" width="25" height="35" fill="oklch(85% 0.01 210)" rx="1"/>
+    <rect x="520" y="140" width="25" height="35" fill="oklch(85% 0.01 210)" rx="1"/>
+    <rect x="550" y="140" width="25" height="35" fill="oklch(85% 0.01 210)" rx="1"/>
+    <rect x="450" y="190" width="25" height="35" fill="oklch(84% 0.008 200)" rx="1"/>
+    <rect x="485" y="190" width="25" height="35" fill="oklch(84% 0.008 200)" rx="1"/>
+    <rect x="520" y="190" width="25" height="35" fill="oklch(84% 0.008 200)" rx="1"/>
+    <rect x="550" y="190" width="25" height="35" fill="oklch(84% 0.008 200)" rx="1"/>
+    <!-- Featured building (the firm) -->
+    <rect x="600" y="100" width="180" height="260" fill="oklch(76% 0.02 68)"/>
+    <rect x="600" y="95" width="180" height="10" fill="oklch(70% 0.025 65)"/>
+    <!-- Door -->
+    <rect x="665" y="260" width="50" height="100" fill="oklch(32% 0.04 50)" rx="2"/>
+    <circle cx="708" cy="310" r="3" fill="oklch(65% 0.08 80)"/>
+    <!-- Windows -->
+    <rect x="615" y="120" width="35" height="50" fill="oklch(86% 0.01 215)" rx="1"/>
+    <rect x="660" y="120" width="35" height="50" fill="oklch(85% 0.012 210)" rx="1"/>
+    <rect x="705" y="120" width="35" height="50" fill="oklch(86% 0.01 215)" rx="1"/>
+    <rect x="750" y="120" width="20" height="50" fill="oklch(84% 0.01 210)" rx="1"/>
+    <rect x="615" y="190" width="35" height="50" fill="oklch(85% 0.01 210)" rx="1"/>
+    <rect x="660" y="190" width="35" height="50" fill="oklch(86% 0.012 215)" rx="1"/>
+    <rect x="705" y="190" width="35" height="50" fill="oklch(85% 0.01 210)" rx="1"/>
+    <rect x="750" y="190" width="20" height="50" fill="oklch(84% 0.01 210)" rx="1"/>
+    <!-- Name plate on building -->
+    <rect x="640" y="248" width="100" height="12" fill="oklch(90% 0.005 80)" rx="1"/>
+    <rect x="650" y="251" width="80" height="3" fill="oklch(48% 0.01 70)"/>
+    <!-- More buildings right -->
+    <rect x="790" y="110" width="130" height="250" fill="oklch(80% 0.02 72)"/>
+    <rect x="930" y="130" width="100" height="230" fill="oklch(82% 0.015 68)"/>
+    <rect x="1040" y="105" width="160" height="255" fill="oklch(78% 0.018 75)"/>
+    <!-- Windows on right buildings -->
+    <rect x="800" y="130" width="28" height="40" fill="oklch(86% 0.008 210)" rx="1"/>
+    <rect x="835" y="130" width="28" height="40" fill="oklch(85% 0.01 215)" rx="1"/>
+    <rect x="870" y="130" width="28" height="40" fill="oklch(86% 0.008 210)" rx="1"/>
+    <rect x="800" y="185" width="28" height="40" fill="oklch(85% 0.01 210)" rx="1"/>
+    <rect x="835" y="185" width="28" height="40" fill="oklch(86% 0.008 215)" rx="1"/>
+    <rect x="870" y="185" width="28" height="40" fill="oklch(85% 0.01 210)" rx="1"/>
+    <!-- Pavement -->
+    <rect y="340" width="1200" height="20" fill="oklch(78% 0.01 75)"/>
+    <!-- Street -->
+    <rect y="355" width="1200" height="5" fill="oklch(55% 0.01 60)"/>
+    <!-- Trees -->
+    <ellipse cx="330" cy="200" rx="35" ry="50" fill="oklch(55% 0.08 145)"/>
+    <rect x="326" y="240" width="8" height="100" fill="oklch(40% 0.04 60)"/>
+    <ellipse cx="970" cy="190" rx="30" ry="45" fill="oklch(52% 0.09 150)"/>
+    <rect x="966" y="230" width="8" height="110" fill="oklch(40% 0.04 60)"/>
+  </svg>
+</div>
+
+<!-- ============ COMPLAINTS PROCEDURE (visible) ============ -->
+<section class="complaints-visible section-pad" id="complaints">
+  <div class="wrapper">
+    <h2 class="complaints-visible__heading">Complaints Procedure</h2>
+    <div class="complaints-visible__body">
+      <div class="complaints-visible__steps">
+        <div class="complaints-visible__step">
+          <span class="complaints-visible__step-num">1</span>
+          <div>
+            <p>In the first instance, please contact <strong>Ms Amrik Baines, Director</strong>, who will try to resolve the problem. We will acknowledge your complaint within <strong>14 days</strong> and provide a full written response within <strong>21 days</strong>.</p>
+          </div>
+        </div>
+        <div class="complaints-visible__step">
+          <span class="complaints-visible__step-num">2</span>
+          <div>
+            <p>If we are unable to resolve your complaint to your satisfaction, you may refer it to the <strong>Legal Ombudsman</strong> within <strong>six months</strong> of receiving our final written response.</p>
+            <div class="complaints-visible__contact">
+              <strong>Legal Ombudsman</strong><br>
+              PO Box 6806, Wolverhampton WV1 9WJ<br>
+              Tel: <a href="tel:03005550333">0300 555 0333</a><br>
+              Email: <a href="mailto:enquiries@legalombudsman.org.uk">enquiries@legalombudsman.org.uk</a>
+            </div>
+          </div>
+        </div>
+        <div class="complaints-visible__step">
+          <span class="complaints-visible__step-num">3</span>
+          <div>
+            <p>If you are concerned about professional conduct or believe we have breached SRA Principles, you may report your concerns directly to the <strong>Solicitors Regulation Authority</strong>.</p>
+            <div class="complaints-visible__contact">
+              <a href="https://www.sra.org.uk/consumers/problems/report-solicitor" target="_blank" rel="noopener">www.sra.org.uk/consumers/problems/report-solicitor</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="complaints-visible__note">We are committed to providing a high-quality legal service. If at any point you are unhappy with the service you receive, please raise it with us so we can address it promptly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrapper footer__inner">
+    <div>
+      <p class="footer__brand"><span class="logo-clc">CLC</span> Solicitors</p>
+      <p class="footer__regulatory">Community Law Clinic Solicitors Limited. Registered in England &amp; Wales (Company No. 4452818). VAT No. 726811923. Authorised and regulated by the Solicitors Regulation Authority (SRA No. 366337). Registered office: 21 Lonsdale Road, Queens Park, London NW6 6RA.</p>
+    </div>
+    <div class="footer__links">
+      <a href="#">Privacy</a>
+      <a href="#" id="openComplaints">Complaints Procedure</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ COMPLAINTS PROCEDURE MODAL ============ -->
+<div class="modal-overlay" id="complaintsModal">
+  <div class="modal">
+    <button class="modal__close" id="closeComplaints" aria-label="Close">&times;</button>
+    <h2>Complaints Procedure</h2>
+    <p>CLC Solicitors is committed to providing a high-quality legal service to all our clients. If something goes wrong, we need you to tell us about it so we can resolve the matter promptly and improve our service.</p>
+
+    <h3>How to raise a concern</h3>
+    <p>In the first instance, if you have any cause for complaint about any aspect of our service, or with your bill, please contact the person dealing with your matter. They will do their best to resolve your concern informally and without delay.</p>
+
+    <h3>Formal complaints</h3>
+    <p>If the matter cannot be resolved informally, or if you prefer to make a formal complaint, please forward your written complaint to:</p>
+    <p style="color: var(--fg); font-weight: 500;">Ms Amrik Baines, Director<br>CLC Solicitors<br>21 Lonsdale Road, Queens Park<br>London NW6 6RA<br>Email: <a href="mailto:law@clcsolicitors.co.uk">law@clcsolicitors.co.uk</a></p>
+
+    <h3>What happens next</h3>
+    <ul>
+      <li>We will <strong>acknowledge your complaint within 14 days</strong> of receiving it.</li>
+      <li>We will provide a <strong>full written response within 21 days</strong> of acknowledgment, setting out our findings and, where appropriate, any remedial action we propose.</li>
+      <li>If you remain dissatisfied after receiving our response, you may escalate your complaint to the Legal Ombudsman.</li>
+    </ul>
+
+    <hr class="modal__divider">
+
+    <h3>Legal Ombudsman</h3>
+    <p>If we are unable to resolve the problem to your satisfaction, you can contact the Legal Ombudsman about your complaint. The Legal Ombudsman deals with complaints about the service you have received from your solicitor. They will look at your complaint independently and it will not affect how we handle your case.</p>
+    <p>You must refer your complaint to the Legal Ombudsman <strong>within six months</strong> of receiving a final written response from us. The complaint must relate to an act or omission that occurred no more than <strong>six years ago</strong>.</p>
+    <ul>
+      <li><strong>Address:</strong> PO Box 6806, Wolverhampton WV1 9WJ</li>
+      <li><strong>Phone:</strong> 0300 555 0333</li>
+      <li><strong>Email:</strong> <a href="mailto:enquiries@legalombudsman.org.uk">enquiries@legalombudsman.org.uk</a></li>
+      <li><strong>Website:</strong> <a href="https://www.legalombudsman.org.uk" target="_blank" rel="noopener">www.legalombudsman.org.uk</a></li>
+    </ul>
+
+    <hr class="modal__divider">
+
+    <h3>Solicitors Regulation Authority</h3>
+    <p>If your complaint relates to the conduct or behaviour of our firm, rather than the quality of service, you may contact the Solicitors Regulation Authority (SRA) directly:</p>
+    <ul>
+      <li><strong>Website:</strong> <a href="https://www.sra.org.uk/consumers/problems/report-solicitor" target="_blank" rel="noopener">www.sra.org.uk/consumers/problems/report-solicitor</a></li>
+    </ul>
+
+    <h3>Your bill</h3>
+    <p>You also have the right to object to your bill by applying to the court for an assessment of the bill under Part III of the Solicitors Act 1974. If you exercise this right, the Legal Ombudsman may not consider a complaint about the bill.</p>
+  </div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+/* Mobile nav toggle */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.contains('open');
+  navToggle.setAttribute('aria-expanded', isOpen);
+});
+/* Close mobile nav on link click */
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+/* Testimonials carousel */
+const track = document.getElementById('testimonialTrack');
+const dots = document.querySelectorAll('.testimonials__dot');
+let currentSlide = 0;
+const slideCount = dots.length;
+
+function goToSlide(i) {
+  currentSlide = i;
+  track.style.transform = `translateX(-${i * 100}%)`;
+  dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+}
+dots.forEach(d => d.addEventListener('click', () => goToSlide(+d.dataset.index)));
+
+/* Auto-advance every 6s, pause on hover */
+let autoPlay = setInterval(() => goToSlide((currentSlide + 1) % slideCount), 6000);
+const carousel = document.querySelector('.testimonials__carousel');
+carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
+carousel.addEventListener('mouseleave', () => {
+  autoPlay = setInterval(() => goToSlide((currentSlide + 1) % slideCount), 6000);
+});
+
+/* Booking form */
+const form = document.getElementById('bookingForm');
+const submitBtn = document.getElementById('submitBtn');
+const successMsg = document.getElementById('formSuccess');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  /* Basic validation */
+  const name = form.fname.value.trim();
+  const email = form.email.value.trim();
+  const service = form.service.value;
+
+  if (!name || !email || !service) {
+    /* Highlight empty required fields */
+    [form.fname, form.email, form.service].forEach(el => {
+      if (!el.value.trim()) {
+        el.style.borderColor = 'oklch(55% 0.18 25)';
+        el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
+        el.addEventListener('change', () => { el.style.borderColor = ''; }, { once: true });
+      }
+    });
+    return;
+  }
+
+  /* Simulate submission */
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+  setTimeout(() => {
+    successMsg.classList.add('show');
+    submitBtn.textContent = 'Sent';
+    form.reset();
+  }, 800);
+});
+
+/* Complaints modal */
+const complaintsModal = document.getElementById('complaintsModal');
+const openBtn = document.getElementById('openComplaints');
+const closeBtn = document.getElementById('closeComplaints');
+
+openBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  complaintsModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+closeBtn.addEventListener('click', () => {
+  complaintsModal.classList.remove('open');
+  document.body.style.overflow = '';
+});
+complaintsModal.addEventListener('click', (e) => {
+  if (e.target === complaintsModal) {
+    complaintsModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && complaintsModal.classList.contains('open')) {
+    complaintsModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+</body>
+</html>
